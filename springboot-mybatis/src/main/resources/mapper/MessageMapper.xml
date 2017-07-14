@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tyd.dao.MessageDao">
+
+    <resultMap id="baseResultMap" type="Message">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result property="nickName" column="NICK_NAME" jdbcType="VARCHAR"/>
+        <result property="ip" column="IP" jdbcType="VARCHAR"/>
+        <result property="insertTime" column="INSERT_TIME" jdbcType="DATE"/>
+    </resultMap>
+
+
+    <select id="getMessageList" resultMap="baseResultMap">
+        select * from message
+    </select>
+
+    <select id="getMessageById" parameterType="int" resultMap="baseResultMap">
+        select * from message where id = #{id}
+    </select>
+
+</mapper>
